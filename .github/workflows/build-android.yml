@@ -100,7 +100,7 @@ jobs:
         cd android
         echo "=== Building Release APK ==="
         ./gradlew clean
-        ./gradlew assembleRelease --no-build-cache --no-daemon -Pandroid.injected.signing.store.file=feixugeshui-release-key.jks -Pandroid.injected.signing.store.password="${{ secrets.KEYSTORE_PASSWORD }}" -Pandroid.injected.signing.key.alias=feixugeshui -Pandroid.injected.signing.key.password="${{ secrets.KEY_PASSWORD }}"
+        ./gradlew assembleRelease --no-build-cache --no-daemon -Pandroid.injected.signing.store.file="${{ github.workspace }}/android/app/feixugeshui-release-key.jks" -Pandroid.injected.signing.store.password="${{ secrets.KEYSTORE_PASSWORD }}" -Pandroid.injected.signing.key.alias=feixugeshui -Pandroid.injected.signing.key.password="${{ secrets.KEY_PASSWORD }}"
         ls -la app/build/outputs/apk/release/
 
     - name: Build Android Debug APK
