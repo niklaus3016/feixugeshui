@@ -13,12 +13,27 @@ const iconSizes = {
   'mipmap-xxxhdpi': 192
 };
 
+const splashSizes = {
+  'drawable': 128,
+  'drawable-port-mdpi': { width: 320, height: 480 },
+  'drawable-port-hdpi': { width: 480, height: 800 },
+  'drawable-port-xhdpi': { width: 720, height: 1280 },
+  'drawable-port-xxhdpi': { width: 1080, height: 1920 },
+  'drawable-port-xxxhdpi': { width: 1440, height: 2560 },
+  'drawable-land-mdpi': { width: 480, height: 320 },
+  'drawable-land-hdpi': { width: 800, height: 480 },
+  'drawable-land-xhdpi': { width: 1280, height: 720 },
+  'drawable-land-xxhdpi': { width: 1920, height: 1080 },
+  'drawable-land-xxxhdpi': { width: 2560, height: 1440 }
+};
+
 async function generateIcons() {
   console.log('Starting icon generation...');
   
   try {
     const buffer = fs.readFileSync(sourceIcon);
     
+    console.log('\n=== Generating launcher icons ===');
     for (const [dir, size] of Object.entries(iconSizes)) {
       const dirPath = path.join(androidResDir, dir);
       
@@ -45,19 +60,30 @@ async function generateIcons() {
         .toFile(foregroundPath);
     }
     
-    console.log('Generating splash.png for drawable...');
-    const splashPath = path.join(androidResDir, 'drawable', 'splash.png');
-    const drawableDir = path.dirname(splashPath);
-    
-    if (!fs.existsSync(drawableDir)) {
-      fs.mkdirSync(drawableDir, { recursive: true });
+    console.log('\n=== Generating splash screens ===');
+    for (const [dir, size] of Object.entries(splashSizes)) {
+      const dirPath = path.join(androidResDir, dir);
+      
+      if (!fs.existsSync(dirPath)) {
+        fs.mkdirSync(dirPath, { recursive: true });
+      }
+      
+      const splashPath = path.join(dirPath, 'splash.png');
+      
+      if (typeof size === 'number') {
+        console.log(`Generating ${dir} (${size}x${size})...`);
+        await sharp(buffer)
+          .resize(size, size)
+          .toFile(splashPath);
+      } else {
+        console.log(`Generating ${dir} (${size.width}x${size.height})...`);
+        await sharp(buffer)
+          .resize(size.width, size.height)
+          .toFile(splashPath);
+      }
     }
     
-    await sharp(buffer)
-      .resize(128, 128)
-      .toFile(splashPath);
-    
-    console.log('✅ All icons generated successfully!');
+    console.log('\n✅ All icons generated successfully!');
     
   } catch (error) {
     console.error('❌ Error generating icons:', error);
