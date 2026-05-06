@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  
+  --color-ink: #0A0A0B;
+  --color-paper: #FFFFFF;
+  --color-accent: #DFFF00; /* Electric Lime */
+  --color-accent-dark: #C4E600;
+  --color-surface: #F4F4F5;
+  --color-border: #E4E4E7;
+  --color-muted: #71717A;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-white text-ink antialiased min-h-screen overflow-x-hidden selection:bg-accent/30;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
+.heading-tight {
+  letter-spacing: -0.02em;
+}
+
+.shadow-premium {
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.markdown-body h1 {
+  @apply text-lg font-black text-gray-900 mb-4 mt-2;
+}
+
+.markdown-body h2 {
+  @apply text-[12px] font-bold text-[#1D438A] mb-3 mt-6 flex items-center gap-2;
+}
+
+.markdown-body h2::before {
+  content: "";
+  @apply w-1 h-3.5 bg-[#1D438A] rounded-full inline-block;
+}
+
+.markdown-body p {
+  @apply text-[12px] text-gray-600 leading-relaxed mb-3;
+}
+
+.markdown-body ul {
+  @apply list-disc list-inside space-y-2 mb-5;
+}
+
+.markdown-body ul li {
+  @apply text-[12px] text-gray-600 font-medium;
+}
+
+.markdown-body table {
+  @apply w-full border-collapse border border-gray-100 rounded-xl overflow-hidden mb-6 text-[10px];
+}
+
+.markdown-body th {
+  @apply bg-gray-50 px-2.5 py-3 text-left font-black text-gray-400 uppercase tracking-tighter border-b border-gray-100;
+}
+
+.markdown-body td {
+  @apply px-2.5 py-3 border-b border-gray-50 text-gray-600 font-medium align-top leading-snug;
+}
+
+.markdown-body strong {
+  @apply font-bold text-[#1D438A];
+}

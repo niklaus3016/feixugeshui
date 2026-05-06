@@ -1,0 +1,6 @@
+{
+  "name": "飞序个税助手",
+  "description": "2026年中国个人所得税（工资薪金所得）极简计算器，适配最新5000元起征点及7级累进税率政策。",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
