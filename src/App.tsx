@@ -142,7 +142,7 @@ const PrivacyPolicyContent = () => (
     <h1 className="text-2xl font-bold text-[#1D438A] text-center mb-2">🔒 隐私政策</h1>
     <p className="text-center text-gray-500 mb-6"><strong>生效日期</strong>：2026年05月06日</p>
 
-    <div className="bg-gradient-to-r from-blue-50 via-blue-50 to-blue-100 p-6 rounded-lg border-l-4 border-[#1D438A] mb-6">
+    <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-[#1D438A] mb-6">
       <p className="text-gray-700">欢迎使用「飞序个税助手」（以下简称"本应用"）。本应用由<strong>光年跃迁（温州）科技有限公司</strong>（以下简称"我们"）开发并运营。我们深知个人信息对您的重要性，将严格遵守《中华人民共和国个人信息保护法》等相关法律法规，保护您的个人信息安全。</p>
     </div>
 
