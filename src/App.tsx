@@ -13,6 +13,7 @@ import {
   X,
   CircleHelp,
   ShieldCheck,
+  Calculator,
 } from 'lucide-react';
 import { calculateTax, calculateAnnualTax } from './utils/taxCalc';
 import { TaxResult, AnnualTaxResult, AnnualTaxInput } from './types';
@@ -719,7 +720,9 @@ const ProfileView = ({ onBack }: { onBack: () => void }) => {
       <div className="px-6 py-4 pb-32">
         <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100">
           <div className="flex flex-col items-center mb-6">
-            <img src="fxgszs512.png" alt="飞序个税助手" className="w-20 h-20 rounded-2xl mb-4 shadow-lg shadow-[#1D438A]/20 object-cover" />
+            <div className="w-20 h-20 bg-[#1D438A] rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-[#1D438A]/20">
+              <Calculator className="w-10 h-10 text-white" />
+            </div>
             <h2 className="text-xl font-bold text-gray-900">飞序个税助手</h2>
             <p className="text-sm text-gray-400 mt-1">版本 1.0</p>
           </div>
